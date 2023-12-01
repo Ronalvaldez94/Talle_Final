@@ -7,10 +7,6 @@ public class Vehiculo implements Serializable{
     private String placa;
     private int horaIngreso;
     private int horaSalida = 0;
-//    private static final long serialVersionUID = 1L;
-
-    // Constructores, getters y setters
-    // Otros métodos específicos si es necesario
 
     public Vehiculo(String placa, int horaIngreso) {
         this.placa = placa;
@@ -40,13 +36,5 @@ public class Vehiculo implements Serializable{
     public void setHoraSalida(int horaSalida) {
         this.horaSalida = horaSalida;
     }
-//    @Override
-//    public String toString() {
-//        return "Automovil{" +
-//               "placa='" + getPlaca() + '\'' +
-//               ", horaIngreso=" + getHoraIngreso() +
-//               ", horaSalida=" + getHoraSalida() +
-//               '}';
-//    }
 
 }
