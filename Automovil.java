@@ -5,8 +5,6 @@ public class Automovil extends Vehiculo {
     private static final long serialVersionUID = 2L;
 
 
-    // Constructores, getters y setters
-
     public Automovil(String placa, int horaIngreso) {
         super(placa, horaIngreso);
     }
