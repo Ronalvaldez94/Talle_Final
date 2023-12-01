@@ -15,7 +15,6 @@ public class Parcial_2 {
         parqueadero.crearArchivo(parqueaderoName);
         double valorHoraAuto = 2000;
 
-        //Listas que utilizaremos
         LinkedList<Automovil> automoviles = new LinkedList<>();
         LinkedList<Motocicleta> motosActuales = new LinkedList<>();
         LinkedList<Automovil> automovilesActuales = new LinkedList<>();
@@ -31,7 +30,6 @@ public class Parcial_2 {
             }
         }
         LinkedList<Vehiculo> copiaVehiculos = new LinkedList<>(vehiculos);
-        //Estos son los archivos que hay dentro del texto
         for (Vehiculo vehiculo : vehiculos) {
             if (vehiculo instanceof Automovil automovil) {
                 automoviles.add(automovil);
@@ -45,33 +43,28 @@ public class Parcial_2 {
             }
         }
 
-        //Automovil creado por defecto 
         Automovil auto = new Automovil("ZYX987", 6);
         automoviles.add(auto);
         automovilesActuales.add(auto);
         copiaVehiculos.add(auto);
         parqueadero.guardarVehiculo(copiaVehiculos, parqueaderoName);
 
-        //Motocicleta creada por defecto
         Motocicleta moto = new Motocicleta("XYZ789", 6);
         motos.add(moto);
         motosActuales.add(moto);
         copiaVehiculos.add(moto);
         parqueadero.guardarVehiculo(copiaVehiculos, parqueaderoName);
 
-        //Listado de motos 
         get("/motos", (req, res) -> {
             res.type("application/json");
             return gson.toJson(motos);
         });
 
-        //listado de automoviles
         get("/automoviles", (req, res) -> {
             res.type("application/json");
             return gson.toJson(automoviles);
         });
 
-        //EndPoint para agregar un Automovil
         get("/agregarAutomovil/:placa/:horaIngreso", (req, res) -> {
 
             res.type("application/json");
@@ -80,14 +73,12 @@ public class Parcial_2 {
 
             int horaIngreso = Integer.parseInt(req.params(":horaIngreso"));
 
-            //Verificar que no se ingrese un vehiculo con misma placa 
             for (Vehiculo vehiculo : copiaVehiculos) {
                 if (vehiculo.getPlaca().equalsIgnoreCase(placa)) {
                     return gson.toJson(null);
                 }
             }
 
-            // Crear un nuevo automóvil y agregarlo al parqueadero
             Automovil nuevoAuto = new Automovil(placa, horaIngreso);
             automoviles.add(nuevoAuto);
             automovilesActuales.add(nuevoAuto);
@@ -96,7 +87,6 @@ public class Parcial_2 {
             return gson.toJson(nuevoAuto);
         });
 
-        //Endpoint para agregar una Motocicleta 
         get("/agregarMoto/:placa/:horaIngreso", (req, res) -> {
 
             res.type("application/json");
